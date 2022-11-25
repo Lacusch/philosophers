@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/25 15:44:48 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:21:01 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,47 @@
 # include <stdbool.h>
 //For NULL
 # include <stdlib.h>
-//Treads
+//treads
 # include <pthread.h>
-
+//for sleep
+# include <unistd.h>
 /**
  *  
  * @abstract Properties of the philosopthers
  */
 
 /**
- * @typedef t_philo
+ * @typedef t_data_philo
  * @brief Properties of the philosophers
  */
-typedef struct philo
+typedef struct data
 {
+	int		philo_nb;
 	int		t_to_die;
 	int		t_to_eat;
 	int		t_to_sleep;
 	bool	option;
 	int		times_to_eat;
+}	t_data_philo;
+
+typedef struct fork
+{
+	pthread_mutex_t	mutex;
+	bool			is_in_use;
+}	t_fork;
+
+typedef struct philo
+{
+	int		eaten;
+	bool	is_dead;
+	t_fork	*fork;
 }	t_philo;
+//parcing.c
+
+int		parce_input(int ac, char **av, t_data_philo *philo);
+
+//utils.c
+
+void	philo_printf(t_data_philo *philo);
 
 #endif

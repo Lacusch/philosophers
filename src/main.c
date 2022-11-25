@@ -6,55 +6,61 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/25 15:47:15 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:30:41 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	philo_printf(t_philo *philo);
+void	create_philos(t_philo *philos, t_data_philo *data);
 
-int	parce_input(int ac, char **av, t_philo *philo)
+void	*routine()
 {
-	t_philo	test;
+	int	i;
 
-	if (ac < 5)
+	i = 0;
+	printf("philo is created\n");
+	while (i < 3)
 	{
-		printf ("not enough arguments\n");
-		return (EXIT_FAILURE);
+		printf("eating\n");
+		i++;
+		sleep(1);
 	}
-	else if (ac > 6)
-	{
-		printf ("too many arguments\n");
-		return (EXIT_FAILURE);
-	}
-	philo->t_to_die = atoi(av[2]);
-	philo->t_to_eat = atoi(av[3]);
-	philo->t_to_sleep = atoi(av[4]);
-	if (ac == 6)
-	{
-		philo->option = true;
-		philo->times_to_eat = atoi(av[5]);
-	}
-	return (EXIT_SUCCESS);
+	return (NULL);
 }
 
 int	main(int ac, char **av)
 {
-	t_philo	philo;
+	t_data_philo	data;
+	t_philo			*philos;
 
-	if (parce_input(ac, av, &philo))
+	philos = NULL;
+	if (parce_input(ac, av, &data))
 		return (EXIT_FAILURE);
-	philo_printf(&philo);
+	philo_printf(&data);
+	create_philos(philos, &data);
 	return (EXIT_SUCCESS);
 }
 
-void	philo_printf(t_philo *philo)
+void	create_philos(t_philo *philos, t_data_philo *data)
 {
-	printf("%d\n", philo->t_to_die);
-	printf("%d\n", philo->t_to_eat);
-	printf("%d\n", philo->t_to_sleep);
-	printf("%d\n", philo->t_to_eat);
-	if (philo->option)
-		printf("%d\n", philo->times_to_eat);
+	int			i;
+	pthread_t	*thread;
+
+	i = 0;
+	thread = malloc(sizeof(thread) * data->philo_nb);
+	philos = malloc(sizeof(t_philo) * data->philo_nb);
+	while (i < data->philo_nb)
+	{
+		philos[i].eaten = 0;
+		philos[i].is_dead = 0;
+		i++;
+		pthread_create(thread + i, NULL, &routine, NULL);
+	}
+	i = 0;
+	while (i < data->philo_nb)
+	{
+		pthread_join(thread[i], NULL);
+		i++;
+	}
 }
