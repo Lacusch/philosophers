@@ -7,7 +7,7 @@ Started on 24. of November fininsh ASAP.
 ## Working on right now
 
 - Setting up flags with enum.
-- Handle parcing
+- ~~Handle parcing~~
 
 ```Bash
 ./philo \
@@ -19,14 +19,14 @@ time_to_eat time_to_sleep \
 
 ## Set up philosophers
 
-- Create struct for the philo itseft
+- Create struct for the philo's atributes itself
   - Left fork
   - Right fork
-  - time to die
-  - time to eat
-  - time to think
+  - ~~time to die~~
+  - ~~time to eat~~
+  - ~~time to think~~
 - Create the forks
-  - Is taken flag with ```enum```
+  - Is taken flag with ```enum``` or ```bool```
   - ```Mutex``` to lock it when taken
 - Code the actions (eat, sleep, thing)
 - Set up flags with erno for the different scenarios
