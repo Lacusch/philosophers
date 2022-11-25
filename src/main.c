@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/25 18:30:41 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/25 19:21:24 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	create_philos(t_philo *philos, t_data_philo *data);
 
-void	*routine()
+void	*routine(void *param)
 {
 	int	i;
+	int	*index;
 
+	index = ((int *)(param));
 	i = 0;
-	printf("philo is created\n");
+	printf("philo %i is created\n", *index);
 	while (i < 3)
 	{
 		printf("eating\n");
@@ -52,15 +54,24 @@ void	create_philos(t_philo *philos, t_data_philo *data)
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{
+		int *tmp = malloc(sizeof(int));
+		*tmp = i;
+		philos[i].nb = *tmp;
 		philos[i].eaten = 0;
 		philos[i].is_dead = 0;
+		pthread_create(thread + i, NULL, &routine, tmp);
 		i++;
-		pthread_create(thread + i, NULL, &routine, NULL);
 	}
 	i = 0;
 	while (i < data->philo_nb)
 	{
 		pthread_join(thread[i], NULL);
+		i++;
+	}
+	i = 0;
+	while (i < data->philo_nb)
+	{
+		printf("philo number is%i\n", philos[i].nb);
 		i++;
 	}
 }
