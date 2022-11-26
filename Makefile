@@ -1,11 +1,12 @@
 NAME = philo
+CC = cc
 SRC = src/main.c \
 	src/parcing.c \
 	src/utils.c
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 all: $(NAME)
 $(NAME):
-	cc $(SRC) $(CFLAGS) -o $(NAME)
+	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
 clean:
 fclean:
 	rm -rf $(NAME)

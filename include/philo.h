@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/25 19:13:26 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:38:56 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct data
 
 typedef struct fork
 {
-	pthread_mutex_t	mutex;
+	pthread_mutex_t	*mutex;
 	bool			is_in_use;
 }	t_fork;
 
