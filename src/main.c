@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 16:32:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:35:11 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	create_philos(t_philo *philos, t_data_philo *data);
 void	create_right_fork(t_philo *philos);
+int		start_threads(t_philo *philos);
 
 void	*routine(void *param)
 {
@@ -62,6 +63,8 @@ void	create_philos(t_philo *philos, t_data_philo *data)
 {
 	int			i;
 	i = 0;
+
+	data->start_time = get_time();
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{
@@ -71,12 +74,14 @@ void	create_philos(t_philo *philos, t_data_philo *data)
 			philos[i].left_fork = philos[i - 1].right_fork;
 		}
 		philos[i].nb = i + 1;
+		philos[i].eaten = 0;
+		philos[i].is_dead = false;
+		philos[i].data = data;
 		if (philos[i].nb == data->philo_nb)
 		{
 			philos[0].left_fork = philos[i].right_fork;
 		}
-		philos[i].eaten = 0;
-		philos[i].is_dead = 0;
+		
 		i++;
 	}
 	i = 0;

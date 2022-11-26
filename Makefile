@@ -2,6 +2,7 @@ NAME = philo
 CC = cc
 SRC = src/main.c \
 	src/parcing.c \
+	src/time.c \
 	src/utils.c
 CFLAGS = -Wall -Wextra -pthread #-Werror
 all: $(NAME)

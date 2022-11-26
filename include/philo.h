@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 14:58:02 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/26 17:26:07 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <pthread.h>
 //for sleep
 # include <unistd.h>
+//for time
+#include <sys/time.h>
 /**
  *  
  * @abstract Properties of the philosopthers
@@ -45,6 +47,7 @@ typedef struct data
 	int		t_to_sleep;
 	bool	option;
 	int		times_to_eat;
+	int		start_time;
 }	t_data_philo;
 
 typedef struct fork
@@ -60,10 +63,15 @@ typedef struct philo
 	int		nb;
 	t_fork	*left_fork;
 	t_fork	*right_fork;
+	t_data_philo	*data;
 }	t_philo;
 //parcing.c
 
 int		parce_input(int ac, char **av, t_data_philo *philo);
+
+//time.c
+
+long get_time(void);
 
 //utils.c
 
