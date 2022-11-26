@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 13:38:56 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:58:02 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ typedef struct philo
 	int		eaten;
 	bool	is_dead;
 	int		nb;
-	t_fork	*fork;
+	t_fork	*left_fork;
+	t_fork	*right_fork;
 }	t_philo;
 //parcing.c
 

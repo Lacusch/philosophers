@@ -3,7 +3,7 @@ CC = cc
 SRC = src/main.c \
 	src/parcing.c \
 	src/utils.c
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -pthread #-Werror
 all: $(NAME)
 $(NAME):
 	$(CC) $(SRC) $(CFLAGS) -o $(NAME)

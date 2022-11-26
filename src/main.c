@@ -6,14 +6,14 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 13:42:16 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:32:37 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
 void	create_philos(t_philo *philos, t_data_philo *data);
-void	create_fork(t_philo *philos);
+void	create_right_fork(t_philo *philos);
 
 void	*routine(void *param)
 {
@@ -47,46 +47,44 @@ int	main(int ac, char **av)
 	return (EXIT_SUCCESS);
 }
 
-void	create_fork(t_philo *philos)
+void	create_right_fork(t_philo *philos)
 {
 	pthread_mutex_t *mutex;
 	mutex = malloc(sizeof(pthread_mutex_t));
-	philos->fork = malloc(sizeof(t_fork));
-	philos->fork->is_in_use = 0;
+	philos->right_fork = malloc(sizeof(t_fork));
+	philos->left_fork = NULL;
+	philos->right_fork->is_in_use = 0;
 	pthread_mutex_init(mutex, NULL);
-	philos->fork->mutex = mutex;
+	philos->right_fork->mutex = mutex;
 }
 
 void	create_philos(t_philo *philos, t_data_philo *data)
 {
 	int			i;
-	pthread_t	*thread;
-
 	i = 0;
-	thread = malloc(sizeof(thread) * data->philo_nb);
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{
-		int *tmp = malloc(sizeof(int));
-		*tmp = i;
-		create_fork(&philos[i]);
-		philos[i].nb = *tmp;
+		create_right_fork(&philos[i]);
+		if (i != 0)
+		{
+			philos[i].left_fork = philos[i - 1].right_fork;
+		}
+		philos[i].nb = i + 1;
+		if (philos[i].nb == data->philo_nb)
+		{
+			philos[0].left_fork = philos[i].right_fork;
+		}
 		philos[i].eaten = 0;
 		philos[i].is_dead = 0;
-		pthread_create(thread + i, NULL, &routine, tmp);
-		i++;
-	}
-	i = 0;
-	while (i < data->philo_nb)
-	{
-		pthread_join(thread[i], NULL);
 		i++;
 	}
 	i = 0;
 	while (i < data->philo_nb)
 	{
 		printf("philo number is%i\n", philos[i].nb);
-		printf("philo %i lock status is:%i\n", philos[i].nb, philos[i].fork->is_in_use);
+		printf("philo %i right fork status:%i\n", philos[i].nb, philos[i].right_fork->is_in_use);
+		printf("philo %i left fork status:%i\n", philos[i].nb, philos[i].left_fork->is_in_use);
 		i++;
 	}
 }
