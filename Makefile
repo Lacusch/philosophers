@@ -19,5 +19,7 @@ re:	fclean all
 t: all
 	./$(NAME) 2 200 200 200 5
 t2: all
-	./$(NAME) 2 200 200 200 
+	./$(NAME) 2 200 200 200
+tre: re t
+tre2: re t2
 .PHONY: all clean fclean re t
