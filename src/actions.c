@@ -6,12 +6,11 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 17:09:12 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:55:52 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-void ft_sleep(int ms);
 
 int eat(t_philo *philo)
 {
@@ -54,4 +53,16 @@ void ft_sleep(int ms)
 	{
 		usleep(10);
 	}
+}
+
+void	*routine(void *param)
+{
+	int	i;
+	t_philo *philos;
+
+	i = 0;
+	philos = (t_philo*)param;
+	eat(philos);
+	
+	return (NULL);
 }
