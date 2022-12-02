@@ -14,7 +14,7 @@ fclean:
 	rm -rf $(NAME)
 re:	fclean all
 t: all
-	./$(NAME) 2 200 200 2 5
+	./$(NAME) 2 200 200 200 5
 t2: all
-	./$(NAME) 2 200 2 2 2
+	./$(NAME) 2 200 200 200 
 .PHONY: all clean fclean re t
