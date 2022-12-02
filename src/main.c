@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 15:37:15 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/02 17:35:25 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,12 @@ int		start_threads(t_philo *philos);
 void	*routine(void *param)
 {
 	int	i;
-	int	*index;
+	t_philo *philos;
 
-	index = ((int *)(param));
 	i = 0;
-	printf("philo %i is created\n", *index);
-	while (i < 3)
-	{
-		printf("eating\n");
-		i++;
-		sleep(1);
-	}
+	philos = (t_philo*)param;
+	eat(philos);
+	
 	return (NULL);
 }
 
@@ -44,7 +39,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	// philo_printf(&data);
 	philos = create_philos(&data);
-	eat(philos);
+	create_threads(philos);
 	return (EXIT_SUCCESS);
 }
 

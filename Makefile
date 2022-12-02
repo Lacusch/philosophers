@@ -3,6 +3,7 @@ CC = cc
 SRC = src/actions.c \
 	src/main.c \
 	src/parcing.c \
+	src/thread.c \
 	src/time.c \
 	src/utils.c
 CFLAGS = -Wall -Wextra -pthread #-Werror
