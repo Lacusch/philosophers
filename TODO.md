@@ -2,6 +2,7 @@
 
 ```Text
 Started on 24. of November fininsh ASAP.
+30 hours from 11.02
 ```
 
 ## Working on right now
@@ -13,7 +14,8 @@ Started on 24. of November fininsh ASAP.
 ./philo \
 number_of_philosophers \
 time_to_die \
-time_to_eat time_to_sleep \
+time_to_eat \
+time_to_sleep \
 (number_of_times_each_philosopher_must_eat) #optional
 ```
 
@@ -25,9 +27,10 @@ time_to_eat time_to_sleep \
   - ~~time to die~~
   - ~~time to eat~~
   - ~~time to think~~
-- Create the forks
+- ~~Create the forks~~
   - ~~Is taken flag with ```enum``` or ```bool```~~
   - ```Mutex``` to lock it when taken
+- Create a routine to test with one thread
 - Code the actions (eat, sleep, thing)
 - Create a global mutex for printing messages
 - Make even philos take a left fork first and uneven philos a right fork first

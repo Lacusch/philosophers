@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 17:26:07 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/02 16:46:39 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct data
 	int		t_to_sleep;
 	bool	option;
 	int		times_to_eat;
-	int		start_time;
+	int	start_time;
 }	t_data_philo;
 
 typedef struct fork
@@ -56,6 +56,15 @@ typedef struct fork
 	bool			is_in_use;
 }	t_fork;
 
+typedef enum state
+{
+	TOOK_FORKS = 0,
+	EATING = 1,
+	SLEEPING = 2,
+	THINKING = 3,
+	DIED = 4,
+	IDLE = 5
+} t_state;
 typedef struct philo
 {
 	int		eaten;
@@ -65,13 +74,16 @@ typedef struct philo
 	t_fork	*right_fork;
 	t_data_philo	*data;
 }	t_philo;
+//actions.c
+int eat(t_philo *philo);
+
 //parcing.c
 
 int		parce_input(int ac, char **av, t_data_philo *philo);
 
 //time.c
 
-long get_time(void);
+int get_time(void);
 
 //utils.c
 

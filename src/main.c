@@ -6,13 +6,13 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/26 17:35:11 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/02 15:37:15 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	create_philos(t_philo *philos, t_data_philo *data);
+t_philo *create_philos(t_data_philo *data);
 void	create_right_fork(t_philo *philos);
 int		start_threads(t_philo *philos);
 
@@ -42,9 +42,9 @@ int	main(int ac, char **av)
 
 	if (parce_input(ac, av, &data))
 		return (EXIT_FAILURE);
-	philos = malloc(data.philo_nb * sizeof(t_philo));
-	philo_printf(&data);
-	create_philos(philos, &data);
+	// philo_printf(&data);
+	philos = create_philos(&data);
+	eat(philos);
 	return (EXIT_SUCCESS);
 }
 
@@ -59,11 +59,12 @@ void	create_right_fork(t_philo *philos)
 	philos->right_fork->mutex = mutex;
 }
 
-void	create_philos(t_philo *philos, t_data_philo *data)
+t_philo *create_philos(t_data_philo *data)
 {
 	int			i;
 	i = 0;
 
+	t_philo *philos;
 	data->start_time = get_time();
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
@@ -87,9 +88,11 @@ void	create_philos(t_philo *philos, t_data_philo *data)
 	i = 0;
 	while (i < data->philo_nb)
 	{
-		printf("philo number is%i\n", philos[i].nb);
+		printf("philo number is:%i\n", philos[i].nb);
 		printf("philo %i right fork status:%i\n", philos[i].nb, philos[i].right_fork->is_in_use);
 		printf("philo %i left fork status:%i\n", philos[i].nb, philos[i].left_fork->is_in_use);
+		printf("\n");
 		i++;
 	}
+	return (philos);
 }
