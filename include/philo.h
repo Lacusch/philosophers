@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 17:56:07 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:58:05 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ typedef enum state
 } t_state;
 typedef struct philo
 {
-	int		eaten;
+	int		times_eaten;
 	bool	is_dead;
 	int		nb;
+	int		last_eaten;
+	t_state	state;
 	t_fork	*left_fork;
 	t_fork	*right_fork;
 	t_data_philo	*data;
@@ -84,6 +86,8 @@ void	*routine(void *param);
 //fork.c
 
 void	create_right_fork(t_philo *philos);
+int get_forks(t_philo *philo);
+int give_fork(t_philo *philo);
 
 //main.c
 

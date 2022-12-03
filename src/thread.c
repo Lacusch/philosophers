@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:12:17 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 17:30:50 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/03 14:56:44 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int create_threads(t_philo *philos)
 {
 	int i;
-	i = 0;
+	i = 0;;
 	// printf("\n%i\n" ,philos->nb);
 	while (i < philos->data->philo_nb)
 	{
