@@ -30,8 +30,8 @@ time_to_sleep \
 - ~~Create the forks~~
   - ~~Is taken flag with ```enum``` or ```bool```~~
   - ```Mutex``` to lock it when taken
-- Create a routine to test with one thread
-- Code the actions (eat, sleep, thing)
+- ~~Create a routine to test with one thread
+- Code the actions (eat, sleep, thing)~~
 - Create a global mutex for printing messages
 - Make even philos take a left fork first and uneven philos a right fork first
-- Set up flags with erno for the different scenarios
+- ~~Set up flags with erno for the different scenarios~~
