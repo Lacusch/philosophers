@@ -1,5 +1,6 @@
 NAME = philo
 CC = cc
+
 SRC = src/actions.c \
 	src/fork.c \
 	src/main.c \
@@ -8,12 +9,15 @@ SRC = src/actions.c \
 	src/thread.c \
 	src/time.c \
 	src/utils.c
+OBJECT = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -pthread #-Werror
 all: $(NAME)
-$(NAME):
-	$(CC) $(SRC) $(CFLAGS) -o $(NAME)
+
+$(NAME): $(OBJECT)
+	$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
 clean:
-fclean:
+	rm src/*.o
+fclean: clean
 	rm -rf $(NAME)
 re:	fclean all
 t: all
