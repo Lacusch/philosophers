@@ -16,7 +16,7 @@ all: $(NAME)
 $(NAME): $(OBJECT)
 	$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
 clean:
-	rm src/*.o
+	rm -rf src/*.o
 fclean: clean
 	rm -rf $(NAME)
 re:	fclean all

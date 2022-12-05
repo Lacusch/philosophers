@@ -6,9 +6,12 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 10:39:46 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:06:40 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
 
 /**
  * @header     philo.h
@@ -17,10 +20,10 @@
  * @author      slaszlo- <slaszlo-@student.42heibronn.de>
  * @link        Intra profile <https://profile.intra.42.fr/users/slaszlo->
 */
-#ifndef PHILO_H
-# define PHILO_H
+
 //For printf
 # include <stdio.h>
+//For bool
 # include <stdbool.h>
 //For NULL
 # include <stdlib.h>
@@ -30,24 +33,22 @@
 # include <unistd.h>
 //for time
 #include <sys/time.h>
-/**
- *  
- * @abstract Properties of the philosopthers
- */
 
 /**
- * @typedef t_data_philo
+ * @typedef t_data
  * @brief Properties of the philosophers
  */
 typedef struct data
 {
-	int		philo_nb;
-	int		t_to_die;
-	int		t_to_eat;
-	int		t_to_sleep;
-	bool	option;
-	int		times_to_eat;
-	int	start_time;
+	int				philo_nb;
+	int				t_to_die;
+	int				t_to_eat;
+	int				t_to_sleep;
+	bool			option;
+	int				times_to_eat;
+	int				start_time;
+	bool			philo_died;
+	pthread_mutex_t	*death_check;
 }	t_data;
 
 typedef struct fork
@@ -95,10 +96,12 @@ int eat(t_philo *philo);
 
 //parcing.c
 
-int		parce_input(int ac, char **av, t_data *philo);
+int	parce_input(int ac, char **av, t_data *data);
 
 //philos.c
 t_philo *create_philos(t_data *data);
+int init_data(t_data *data);
+int init_locks(t_data *data);
 
 //thread.c
 

@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 10:38:52 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:12:52 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_philo *create_philos(t_data *data)
 	i = 0;
 
 	t_philo *philos;
-	data->start_time = get_time();
+	// data->start_time = get_time();
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{
@@ -32,6 +32,7 @@ t_philo *create_philos(t_data *data)
 		philos[i].is_dead = false;
 		philos[i].data = data;
 		philos[i].state = IDLE;
+		philos[i].last_eaten = 0;
 		if (philos[i].nb == data->philo_nb)
 		{
 			philos[0].left_fork = philos[i].right_fork;
@@ -49,4 +50,29 @@ t_philo *create_philos(t_data *data)
 	// 	i++;
 	// }
 	return (philos);
+}
+
+int init_locks(t_data *data)
+{
+	if (data == NULL)
+		return(EXIT_FAILURE);
+	//print lock
+	//meal lock
+	//full lock
+	//death_check
+	//death_flag
+	data->death_check = malloc(sizeof(pthread_mutex_t));
+	if (data->death_check == NULL)
+		return (EXIT_FAILURE);
+	if (pthread_mutex_init(data->death_check, NULL) != 0)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+int init_data(t_data *data)
+{
+	data->philo_died = false;
+		data->start_time = get_time();
+	if (init_locks(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	return (0);
 }
