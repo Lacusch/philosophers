@@ -4,6 +4,7 @@ CC = cc
 SRC = src/actions.c \
 	src/fork.c \
 	src/main.c \
+	src/monitoring.c \
 	src/parcing.c \
 	src/philos.c \
 	src/thread.c \

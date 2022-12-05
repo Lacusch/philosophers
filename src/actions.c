@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 12:09:25 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:25:20 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	*routine(void *param)
 	
 	i = 0;
 	philos = (t_philo*)param;
-	while (!philos->is_dead)
+	while (philos->is_dead == false)
 	{
 		i++;
 		printf("philo %i last eaten%i\n", philos->nb, philos->last_eaten);

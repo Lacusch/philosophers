@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 12:06:40 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:07:54 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct data
 	int				times_to_eat;
 	int				start_time;
 	bool			philo_died;
+	pthread_mutex_t	*time_check;
 	pthread_mutex_t	*death_check;
 }	t_data;
 
@@ -93,6 +94,11 @@ int give_fork(t_philo *philo);
 //main.c
 
 int eat(t_philo *philo);
+
+//monitoring.c
+
+void monitoring(t_philo *philos);
+bool is_dead(t_philo *philos);
 
 //parcing.c
 
