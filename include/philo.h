@@ -6,14 +6,14 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/03 15:58:05 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:10:16 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
  * @header     philo.h
  * @abstract    All functions for the philosophers.
- * @version     0.1
+ * @version     0.5
  * @author      slaszlo- <slaszlo-@student.42heibronn.de>
  * @link        Intra profile <https://profile.intra.42.fr/users/slaszlo->
 */
