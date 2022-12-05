@@ -6,13 +6,13 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/03 16:00:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:38:52 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_philo *create_philos(t_data_philo *data)
+t_philo *create_philos(t_data *data)
 {
 	int			i;
 	i = 0;

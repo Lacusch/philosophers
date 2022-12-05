@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 18:03:43 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:39:17 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	t_data_philo	data;
+	t_data	data;
 	t_philo			*philos;
 
 	philos = NULL;

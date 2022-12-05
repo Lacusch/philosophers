@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 10:10:16 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:39:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct data
 	bool	option;
 	int		times_to_eat;
 	int	start_time;
-}	t_data_philo;
+}	t_data;
 
 typedef struct fork
 {
@@ -74,7 +74,7 @@ typedef struct philo
 	t_state	state;
 	t_fork	*left_fork;
 	t_fork	*right_fork;
-	t_data_philo	*data;
+	t_data	*data;
 	pthread_t thread;
 }	t_philo;
 //actions.c
@@ -95,10 +95,10 @@ int eat(t_philo *philo);
 
 //parcing.c
 
-int		parce_input(int ac, char **av, t_data_philo *philo);
+int		parce_input(int ac, char **av, t_data *philo);
 
 //philos.c
-t_philo *create_philos(t_data_philo *data);
+t_philo *create_philos(t_data *data);
 
 //thread.c
 
@@ -110,6 +110,6 @@ int get_time(void);
 
 //utils.c
 
-void	philo_printf(t_data_philo *philo);
+void	philo_printf(t_data *philo);
 
 #endif

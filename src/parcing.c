@@ -6,13 +6,13 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:55:06 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/11/25 18:21:12 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 10:38:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	parce_input(int ac, char **av, t_data_philo *philo)
+int	parce_input(int ac, char **av, t_data *philo)
 {
 	if (ac < 5)
 	{
