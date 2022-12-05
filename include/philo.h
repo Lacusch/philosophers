@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 15:07:54 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:23:14 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,15 @@ typedef struct data
 	int				times_to_eat;
 	int				start_time;
 	bool			philo_died;
+	pthread_mutex_t	*write;
 	pthread_mutex_t	*time_check;
 	pthread_mutex_t	*death_check;
+	pthread_mutex_t	*full_flag;
+	pthread_mutex_t	*meal_count;
 }	t_data;
 
+	pthread_mutex_t		*death_flag;
+	
 typedef struct fork
 {
 	pthread_mutex_t	*mutex;

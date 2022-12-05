@@ -31,14 +31,15 @@ time_to_sleep \
   - ~~Is taken flag with ```enum``` or ```bool```~~
   - ~~```Mutex``` to lock it when taken~~
 - Create mutex for each operation
-  - write
-  - meal
-  - flag
-  - death_check
-  - death_flag?
-  - full_flag?
+  - ~~write~~
+  - ~~meal~~
+  - ~~flag~~
+  - ~~death_check~~
+  - ~~death_flag?~~
+  - ~~full_flag?~~
+  - create functions to set up the locks
 - ~~Create a routine to test with one thread~~
-- Code the actions (eat, sleep, thing)
+- ~~Code the actions (eat, sleep, thing)~~
 - Make even philos take a left fork first and uneven philos a right fork first
   - most likely use a delay
 - ~~Set up flags with erno for the different scenarios~~
