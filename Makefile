@@ -2,6 +2,7 @@ NAME = philo
 CC = cc
 
 SRC = src/actions.c \
+	src/eat.c \
 	src/fork.c \
 	src/main.c \
 	src/monitoring.c \

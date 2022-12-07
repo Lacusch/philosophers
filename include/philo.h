@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 16:23:14 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:56:45 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ typedef struct philo
 int eat(t_philo *philo);
 void ft_sleep(int ms);
 void	*routine(void *param);
+
+//eat.c
+
+int eat(t_philo *philo);
 
 //fork.c
 

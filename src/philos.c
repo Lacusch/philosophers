@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 14:53:45 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/07 13:45:28 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,19 @@ int init_locks(t_data *data)
 {
 	if (data == NULL)
 		return(EXIT_FAILURE);
-	//print lock
-	//meal lock
-	//full lock
-	//death_check
-	//death_flag
 	data->death_check = malloc(sizeof(pthread_mutex_t));
 	data->time_check = malloc(sizeof(pthread_mutex_t));
-	if (data->death_check == NULL || data->time_check == NULL)
+	data->full_flag = malloc(sizeof(pthread_mutex_t));
+	data->meal_count = malloc(sizeof(pthread_mutex_t));
+	data->write = malloc(sizeof(pthread_mutex_t));
+	if (data->death_check == NULL || data->time_check == NULL || data->full_flag == NULL || data->meal_count == NULL || data->write == NULL)
 		return (EXIT_FAILURE);
 	if (pthread_mutex_init(data->death_check, NULL) != 0 ||
-		pthread_mutex_init(data->time_check, NULL) != 0 )
+		pthread_mutex_init(data->time_check, NULL) != 0 ||
+		pthread_mutex_init(data->full_flag, NULL) != 0 ||
+		pthread_mutex_init(data->meal_count, NULL) != 0 ||
+		pthread_mutex_init(data->write, NULL) != 0
+		 )
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
