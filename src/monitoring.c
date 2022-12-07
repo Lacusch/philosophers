@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 15:08:33 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:08:05 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ bool is_dead(t_philo *philos)
 	{
 		pthread_mutex_lock(philos->data->death_check);
 		philos->data->philo_died = true;
+		philos->is_dead = true;
 		pthread_mutex_unlock(philos->data->death_check);
-		//print lock
-		printf("%d %d died", get_time() - philos->data->start_time, philos->nb);
-		//print unlock;
+		pthread_mutex_lock(philos->data->write);
+		printf("%d %d died\n", get_time() - philos->data->start_time, philos->nb);
+		pthread_mutex_unlock(philos->data->write);
 		return (true);		
 	}
 	return (false);

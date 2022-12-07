@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 14:29:31 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:10:16 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void print_fork(t_philo *philo)
 }
 int get_forks(t_philo *philo)
 {
+	// if (!is_dead(philo))
+	// 	return (1);
 	//have a case where there is only one philo
 	pthread_mutex_lock(philo->left_fork->mutex);
 	print_fork(philo);
