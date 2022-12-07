@@ -43,3 +43,8 @@ time_to_sleep \
 - Make even philos take a left fork first and uneven philos a right fork first
   - most likely use a delay
 - ~~Set up flags with erno for the different scenarios~~
+
+## Stuff to implement
+
+- Write a function to check if the philo has died or not and run it inside each operation.
+- Write a monitoring function to run inside the main loop.
