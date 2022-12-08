@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:52 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:59:21 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ bool full_check (t_philo *philo);
 
 int to_sleep(t_philo *philo)
 {
-	// if (!is_dead(philo))
-	// 	return (1);
+	if (death_check(philo) == true)
+		return (true);
 	pthread_mutex_lock(philo->data->write);
 	printf("%i %i is sleeping\n",  get_time() - philo->data->start_time, philo->nb);
 	pthread_mutex_unlock(philo->data->write);
@@ -47,33 +47,38 @@ void	*routine(void *param)
 	{
 		printf("philo %i last eaten%i\n", philos->nb, get_time() - philos->last_eaten - philos->data->start_time);
 		//mostly done
-		get_forks(philos);
+		if (get_forks(philos) == true)
+			return (NULL);
 		//mostly done
-		eat(philos);
+		if (eat(philos) == true)
+			return (NULL);
 		if (full_check(philos))
 			return (NULL);
-		to_sleep(philos);
-		think(philos);
-		
+		if (to_sleep(philos) == true)
+			return (NULL);
+		if (think(philos) == true)
+			return (NULL);
 	}
 	return (NULL);
 }
 
 bool full_check (t_philo *philo)
 {
+	if (death_check(philo) == true)
+		return (1);
 	pthread_mutex_lock(philo->data->full_flag);
-		if (philo->times_eaten >= philo->data->times_to_eat && philo->data->option)
-		{
-			pthread_mutex_unlock(philo->data->full_flag);
-			return (true);
-		}
+	if (philo->times_eaten >= philo->data->times_to_eat && philo->data->option)
+	{
+		pthread_mutex_unlock(philo->data->full_flag);
+		return (true);
+	}
 	pthread_mutex_unlock(philo->data->full_flag);
 	return (false);
 }
 int think(t_philo *philo)
 {
-	// if (!is_dead(philo))
-	// 	return (1);
+	if (death_check(philo) == true)
+		return (1);
 	pthread_mutex_lock(philo->data->write);
 	printf("%i %i is thinking\n",  get_time() - philo->data->start_time, philo->nb);
 	pthread_mutex_unlock(philo->data->write);

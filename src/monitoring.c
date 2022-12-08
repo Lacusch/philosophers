@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 16:08:05 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:54:37 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void monitoring(t_philo *philos)
 	int	i;
 
 
-	while (philos->data->philo_died == false)
+	while (death_check(philos))
 	{
 		i = 0;
 		while (i < philos->data->philo_nb)
@@ -50,5 +50,17 @@ bool is_dead(t_philo *philos)
 		pthread_mutex_unlock(philos->data->write);
 		return (true);		
 	}
+	return (false);
+}
+
+bool death_check(t_philo *philo)
+{
+	pthread_mutex_lock(philo->data->death_check);
+	if (philo->data->philo_died == true)
+	{
+		pthread_mutex_unlock(philo->data->death_check);
+		return (true);
+	}
+	pthread_mutex_unlock(philo->data->death_check);
 	return (false);
 }

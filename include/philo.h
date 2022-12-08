@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 13:56:45 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:44:13 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int eat(t_philo *philo);
 
 void monitoring(t_philo *philos);
 bool is_dead(t_philo *philos);
+bool death_check(t_philo *philo);
 
 //parcing.c
 

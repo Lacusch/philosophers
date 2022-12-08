@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 13:45:28 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:23:48 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,6 @@ t_philo *create_philos(t_data *data)
 		i++;
 	}
 	i = 0;
-	// while (i < data->philo_nb)
-	// {
-	// 	printf("philo number is:%i\n", philos[i].nb);
-	// 	printf("philo %i right fork status:%i\n", philos[i].nb, philos[i].right_fork->is_in_use);
-	// 	printf("philo %i left fork status:%i\n", philos[i].nb, philos[i].left_fork->is_in_use);
-	// 	printf("\n");
-	// 	i++;
-	// }
 	return (philos);
 }
 

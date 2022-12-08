@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:16 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:55:02 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void print_fork(t_philo *philo)
 }
 int get_forks(t_philo *philo)
 {
+	if (death_check(philo) == true)
+		return (1);
 	// if (!is_dead(philo))
 	// 	return (1);
 	//have a case where there is only one philo
