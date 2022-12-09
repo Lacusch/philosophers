@@ -1,6 +1,12 @@
 NAME = philo
 CC = cc
+CFLAGS = -Wall -Wextra -pthread #-Werror
 
+# Colors
+GREEN = \033[1;32m
+RED = \033[1;91m
+YELLOW = \033[1;33m
+NORMAL= \033[0m
 SRC = src/actions.c \
 	src/eat.c \
 	src/fork.c \
@@ -12,18 +18,28 @@ SRC = src/actions.c \
 	src/time.c \
 	src/utils.c
 OBJECT = $(SRC:.c=.o)
-CFLAGS = -Wall -Wextra -pthread #-Werror
+%.o : %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 all: $(NAME)
 
 $(NAME): $(OBJECT)
-	$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
+	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
+	@echo "$(NORMAL)$(GREEN)Flags used: $(CFLAGS)$(NORMAL)"	
+	@$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
 clean:
-	rm -rf src/*.o
+	@echo "$(YELLOW)Cleaning *.o files$(NORMAL)"
+	@rm -rf src/*.o
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "$(RED)Cleaning $(NAME)$(NORMAL)"
 re:	fclean all
 t: all
-	./$(NAME) 2 200 200 200 5
+	@echo "running test with parameters 2 200 200 200 5 \n"
+	@sleep 1
+	@./$(NAME) 2 200 200 200 5
 t2: all
+	@sleep 1
+	@echo "running test with parameters 2 200 200 200 5 \n"
 	./$(NAME) 2 200 200 200
 .PHONY: all clean fclean re t
