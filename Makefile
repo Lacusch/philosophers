@@ -42,7 +42,7 @@ t2: all
 	@sleep 1
 	@echo "running test with parameters 2 200 200 200 5 \n"
 	./$(NAME) 2 200 200 200
-print:
+p:
 	@echo "How to add parameters:"
 	@echo "./philo n\nnumber_of_philosophers\ntime_to_die\ntime_to_eat\ntime_to_sleep"
 .PHONY: all clean fclean re t
