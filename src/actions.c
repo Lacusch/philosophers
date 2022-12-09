@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:09:12 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:17:20 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ void ft_sleep(int ms)
 
 void	*routine(void *param)
 {
-	int	i;
 	t_philo *philos;
 	
-	i = 0;
 	philos = (t_philo*)param;
 	if (philos->nb % 2 == 0)
 		ft_sleep(philos->data->t_to_eat / 2);
