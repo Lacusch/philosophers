@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/08 16:54:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:11:37 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool is_dead(t_philo *philos)
 	pthread_mutex_lock(philos->data->time_check);
 	last_eaten = get_time() - philos->data->start_time - philos->last_eaten;
 	pthread_mutex_unlock(philos->data->time_check);
-	if (last_eaten >= philos->data->t_to_eat)
+	if (last_eaten >= philos->data->t_to_die)
 	{
 		pthread_mutex_lock(philos->data->death_check);
 		philos->data->philo_died = true;

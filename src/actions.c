@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/08 16:59:21 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:09:12 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void	*routine(void *param)
 	
 	i = 0;
 	philos = (t_philo*)param;
-	while (!is_dead(philos))
+	if (philos->nb % 2 == 0)
+		ft_sleep(philos->data->t_to_eat / 2);
+	while (is_dead(philos) == 0)
 	{
-		printf("philo %i last eaten%i\n", philos->nb, get_time() - philos->last_eaten - philos->data->start_time);
+		// printf("philo %i last eaten%i\n", philos->nb, get_time() - philos->last_eaten - philos->data->start_time);
 		//mostly done
 		if (get_forks(philos) == true)
 			return (NULL);
