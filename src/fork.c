@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/11 14:54:13 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:20:08 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int get_forks(t_philo *philo)
 	}
 	if (death_check(philo) == true)
 	{
-		pthread_mutex_unlock(philo->data->full_flag);
+		pthread_mutex_unlock(philo->left_fork->mutex);
 		return (true);
 	}
 	pthread_mutex_lock(philo->right_fork->mutex);

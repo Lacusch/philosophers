@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:56:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/11 14:53:06 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:17:40 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int eat(t_philo *philo)
 {
 	// if (!is_dead(philo))
 	// 	return (1);
+		// printf("My number is:%i\n", philo->nb);
 	pthread_mutex_lock(philo->data->time_check);
 	if (death_check(philo) == true)
 	{
