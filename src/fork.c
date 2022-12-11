@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/09 16:22:52 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 12:39:59 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ void print_fork(t_philo *philo)
 }
 int get_forks(t_philo *philo)
 {
-	if (death_check(philo) == true)
+	pthread_mutex_lock(philo->data->death_check);
+	if (philo->data->philo_died == true)
+	{
+		pthread_mutex_unlock(philo->data->death_check);
 		return (1);
+	}
 	//have a case where there is only one philo
 	pthread_mutex_lock(philo->left_fork->mutex);
 	print_fork(philo);
@@ -45,6 +49,7 @@ int get_forks(t_philo *philo)
 	}
 	pthread_mutex_lock(philo->right_fork->mutex);
 	print_fork(philo);
+	pthread_mutex_unlock(philo->data->death_check);
 	return (EXIT_SUCCESS);
 }
 
