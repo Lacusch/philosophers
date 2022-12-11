@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/11 12:16:50 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 12:38:41 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	*routine(void *param)
 	while (is_dead(philos) == 0)
 	{
 		// printf("philo %i last eaten%i\n", philos->nb, get_time() - philos->last_eaten - philos->data->start_time);
-		//mostly done
+		//Change
 		if (get_forks(philos) == true)
 			return (NULL);
-		//mostly done
+		//Change
 		if (eat(philos) == true)
 			return (NULL);
 		if (full_check(philos))
@@ -67,23 +67,25 @@ void	*routine(void *param)
 
 bool full_check (t_philo *philo)
 {
-	if (death_check(philo) == true)
-		return (1);
-	pthread_mutex_lock(philo->data->full_flag);
-	if (philo->times_eaten >= philo->data->times_to_eat && philo->data->option)
+	pthread_mutex_lock(philo->data->death_check);
+	if (philo->data->philo_died == true)
 	{
-		pthread_mutex_unlock(philo->data->full_flag);
-		return (true);
+		pthread_mutex_unlock(philo->data->death_check);
+		return (1);
 	}
 	pthread_mutex_unlock(philo->data->full_flag);
+	pthread_mutex_unlock(philo->data->death_check);
 	return (false);
 }
 int think(t_philo *philo)
 {
-	if (death_check(philo) == true)
+	pthread_mutex_lock(philo->data->death_check);
+	if (philo->data->philo_died == true)
+	{
+		pthread_mutex_unlock(philo->data->death_check);
 		return (1);
-	pthread_mutex_lock(philo->data->write);
+	}
 	printf("%i %i is thinking\n",  get_time() - philo->data->start_time, philo->nb);
-	pthread_mutex_unlock(philo->data->write);
+	pthread_mutex_unlock(philo->data->death_check);
 	return (0);
 }
