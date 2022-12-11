@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/09 19:17:20 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 12:16:50 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ bool full_check (t_philo *philo);
 
 int to_sleep(t_philo *philo)
 {
-	if (death_check(philo) == true)
-		return (true);
-	pthread_mutex_lock(philo->data->write);
+	pthread_mutex_lock(philo->data->death_check);
+	if (philo->data->philo_died == true)
+	{
+		pthread_mutex_unlock(philo->data->death_check);
+		return (1);
+	}
 	printf("%i %i is sleeping\n",  get_time() - philo->data->start_time, philo->nb);
-	pthread_mutex_unlock(philo->data->write);
+	pthread_mutex_unlock(philo->data->death_check);
 	ft_sleep(philo->data->t_to_sleep);
 	return (0);
 }
