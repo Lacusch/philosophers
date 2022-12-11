@@ -41,7 +41,11 @@ t: all
 t2: all
 	@sleep 1
 	@echo "running test with parameters 2 200 200 200 5 \n"
-	./$(NAME) 2 200 200 200
+	./$(NAME) 10 300 200 200
+t5: all
+	@sleep 1
+	@echo "running test with parameters 30 600 200 200 5 \n"
+	./$(NAME) 40 400 200 200
 print:
 	@echo "How to add parameters:"
 	@echo "./philo n\nnumber_of_philosophers\ntime_to_die\ntime_to_eat\ntime_to_sleep"

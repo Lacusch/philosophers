@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/09 15:11:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 15:10:11 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ void monitoring(t_philo *philos)
 {
 	int	i;
 
-
 	while (death_check(philos))
 	{
 		i = 0;
 		while (i < philos->data->philo_nb)
 		{
-			if (!is_dead(&philos[i]))
+			if (!is_dead(&philos[i]) && !death_check(philos))
 				return ;
 				//lock print??
 			i++;

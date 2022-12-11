@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/09 19:17:20 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:52:26 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ bool full_check (t_philo *philo);
 
 int to_sleep(t_philo *philo)
 {
-	if (death_check(philo) == true)
-		return (true);
 	pthread_mutex_lock(philo->data->write);
+	if (death_check(philo) == true)
+	{
+		pthread_mutex_unlock(philo->data->write);
+		return (true);
+	}
 	printf("%i %i is sleeping\n",  get_time() - philo->data->start_time, philo->nb);
 	pthread_mutex_unlock(philo->data->write);
 	ft_sleep(philo->data->t_to_sleep);
@@ -64,9 +67,12 @@ void	*routine(void *param)
 
 bool full_check (t_philo *philo)
 {
-	if (death_check(philo) == true)
-		return (1);
 	pthread_mutex_lock(philo->data->full_flag);
+	if (death_check(philo) == true)
+	{
+		pthread_mutex_unlock(philo->data->full_flag);
+		return (true);
+	}
 	if (philo->times_eaten >= philo->data->times_to_eat && philo->data->option)
 	{
 		pthread_mutex_unlock(philo->data->full_flag);
@@ -77,9 +83,13 @@ bool full_check (t_philo *philo)
 }
 int think(t_philo *philo)
 {
-	if (death_check(philo) == true)
-		return (1);
+	
 	pthread_mutex_lock(philo->data->write);
+	if (death_check(philo) == true)
+	{
+		pthread_mutex_unlock(philo->data->write);
+		return (true);
+	}
 	printf("%i %i is thinking\n",  get_time() - philo->data->start_time, philo->nb);
 	pthread_mutex_unlock(philo->data->write);
 	return (0);
