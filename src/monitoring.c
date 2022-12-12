@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/11 18:48:00 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:31:14 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,7 @@ bool is_dead(t_philo *philos)
 		philos->data->philo_died = true;
 		philos->is_dead = true;
 		pthread_mutex_unlock(philos->data->death_check);
-		// printf("died\n");
-		pthread_mutex_lock(philos->data->write);
-		// printf("Went over deadlock\n");
-		printf("%d %d died\n", get_time() - philos->data->start_time, philos->nb);
-		pthread_mutex_unlock(philos->data->write);
-		// pthread_mutex_unlock(philos->data->death_check);
+		print_action(philos, "died");
 		return (true);		
 	}
 	pthread_mutex_unlock(philos->data->death_check);
@@ -67,14 +62,3 @@ void death_set(t_philo *philo)
 }
 */
 
-bool death_check(t_philo *philo)
-{
-	pthread_mutex_lock(philo->data->death_check);
-	if (philo->data->philo_died == true)
-	{
-		pthread_mutex_unlock(philo->data->death_check);
-		return (true);
-	}
-	pthread_mutex_unlock(philo->data->death_check);
-	return (false);
-}

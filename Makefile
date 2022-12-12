@@ -8,16 +8,17 @@ RED = \033[1;91m
 YELLOW = \033[1;33m
 NORMAL= \033[0m
 SRC = src/actions.c \
-	src/eat.c \
 	src/fork.c \
+	src/get_status.c \
 	src/main.c \
 	src/monitoring.c \
 	src/parcing.c \
 	src/philos.c \
-	src/print.c \ 
+	src/routine.c \
 	src/thread.c \
 	src/time.c \
 	src/utils.c
+
 OBJECT = $(SRC:.c=.o)
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@

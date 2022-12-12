@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 11:12:53 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:51:36 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	int				times_to_eat;
 	int				start_time;
 	bool			philo_died;
+	int				full;
 	pthread_mutex_t	*write;
 	pthread_mutex_t	*time_check;
 	pthread_mutex_t	*death_check;
@@ -84,19 +85,20 @@ typedef struct s_philo
 }	t_philo;
 //actions.c
 
+void print_action(t_philo *philo, char *str);
+int return_fork(t_philo *philo);
+int take_fork(t_philo *philo);
 int eat(t_philo *philo);
-void ft_sleep(int ms);
-void	*routine(void *param);
-
-//eat.c
-
-int eat(t_philo *philo);
+int to_sleep(t_philo *philo);
 
 //fork.c
 
 void	create_right_fork(t_philo *philos);
-int get_forks(t_philo *philo);
-int give_fork(t_philo *philo);
+
+//get_status.c
+
+bool death_check(t_philo *philo);
+
 
 //main.c
 
@@ -106,8 +108,6 @@ int eat(t_philo *philo);
 
 void monitoring(t_philo *philos);
 bool is_dead(t_philo *philos);
-bool death_check(t_philo *philo);
-
 //parcing.c
 
 int	parce_input(int ac, char **av, t_data *data);
@@ -120,10 +120,12 @@ t_philo *create_philos(t_data *data);
 int init_data(t_data *data);
 int init_locks(t_data *data);
 
-//print.c
+//routine.c
 
-void print_action(t_philo *philo, char *str);
-
+void ft_sleep(int ms);
+void	*routine(void *param);
+int think(t_philo *philo);
+bool full_check (t_philo *philo);
 //thread.c
 
 int create_threads(t_philo *philos);

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write.c                                            :+:      :+:    :+:   */
+/*   get_status.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 11:06:03 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 11:07:46 by slaszlo-         ###   ########.fr       */
+/*   Created: 2022/12/12 12:25:18 by slaszlo-          #+#    #+#             */
+/*   Updated: 2022/12/12 12:48:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void print_action(t_philo *philo, char *str)
+bool death_check(t_philo *philo)
 {
-	pthread_mutex_lock(philo->data->write);
-	printf("%i %i %s\n",  get_time() - philo->data->start_time, philo->nb, str);
-	pthread_mutex_unlock(philo->data->write);
+	bool ret;
+
+	pthread_mutex_lock(philo->data->death_check);
+	ret = philo->data-> philo_died;
+	pthread_mutex_unlock(philo->data->death_check);
+	return (ret);
 }
+
+
+
