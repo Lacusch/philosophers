@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 10:52:25 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:19:29 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_philo *create_philos(t_data *data)
 	i = 0;
 
 	t_philo *philos;
-	// data->start_time = get_time();
 	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{

@@ -14,6 +14,7 @@ SRC = src/actions.c \
 	src/monitoring.c \
 	src/parcing.c \
 	src/philos.c \
+	src/print.c \ 
 	src/thread.c \
 	src/time.c \
 	src/utils.c

@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 10:46:20 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:12:53 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
  * @typedef t_data
  * @brief Properties of the philosophers
  */
-typedef struct data
+typedef struct s_data
 {
 	int				philo_nb;
 	int				t_to_die;
@@ -55,13 +55,13 @@ typedef struct data
 	pthread_mutex_t	*meal_count;
 }	t_data;
 
-typedef struct fork
+typedef struct s_fork
 {
 	pthread_mutex_t	*mutex;
 	bool			is_in_use;
 }	t_fork;
 
-typedef enum state
+typedef enum s_state
 {
 	TOOK_FORKS = 0,
 	EATING = 1,
@@ -70,7 +70,7 @@ typedef enum state
 	DIED = 4,
 	IDLE = 5
 } t_state;
-typedef struct philo
+typedef struct s_philo
 {
 	int		times_eaten;
 	bool	is_dead;
@@ -115,9 +115,14 @@ bool printf_error(char* str);
 bool wrong_input(t_data *data);
 
 //philos.c
+
 t_philo *create_philos(t_data *data);
 int init_data(t_data *data);
 int init_locks(t_data *data);
+
+//print.c
+
+void print_action(t_philo *philo, char *str);
 
 //thread.c
 
