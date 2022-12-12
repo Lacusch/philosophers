@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 13:02:09 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:20:13 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int to_sleep(t_philo *philo);
 
 bool death_check(t_philo *philo);
 bool full(t_philo *philo);
-int last_time_eaten(t_philo *philo);
+int	get_last_eaten(t_philo *philo);
 
 //fork.c
 
@@ -123,7 +123,6 @@ int init_locks(t_data *data);
 
 //routine.c
 
-void ft_sleep(int ms);
 void	*routine(void *param);
 int think(t_philo *philo);
 bool full_check (t_philo *philo);
@@ -138,5 +137,6 @@ int get_time(void);
 //utils.c
 
 void	philo_printf(t_data *philo);
+void ft_sleep(int ms);
 
 #endif

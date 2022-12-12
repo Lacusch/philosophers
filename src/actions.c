@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:50:32 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:12:23 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,8 @@ int return_fork(t_philo *philo)
 
 int eat(t_philo *philo)
 {
-	pthread_mutex_lock(philo->data->time_check);
 	if (death_check(philo) == true)
-	{
-		pthread_mutex_unlock(philo->data->time_check);
 		return (true);
-	}
 	philo->last_eaten = get_time() - philo->data->start_time;
 	pthread_mutex_unlock(philo->data->time_check);
 	print_action(philo, "is eating");

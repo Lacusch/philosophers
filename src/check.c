@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:18 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 13:01:18 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:12:36 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool full(t_philo *philo)
 	pthread_mutex_unlock(philo->data->full_flag);
 	return (ret);
 }
-int last_time_eaten(t_philo *philo)
+int get_last_eaten(t_philo *philo)
 {
 	int time;
 	pthread_mutex_lock(philo->data->time_check);

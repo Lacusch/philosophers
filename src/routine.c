@@ -6,22 +6,11 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:51:17 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:06:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
-void ft_sleep(int ms)
-{
-	int cur_time;
-
-	cur_time = get_time();
-	while ((get_time() - cur_time) < ms)
-	{
-		usleep(500);
-	}
-}
 
 void	*routine(void *param)
 {
