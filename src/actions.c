@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 13:12:23 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:40:28 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int eat(t_philo *philo)
 	print_action(philo, "is eating");
 	ft_sleep(philo->data->t_to_eat);
 	return_fork(philo);
+	
 	pthread_mutex_lock(philo->data->meal_count);
 	philo->times_eaten++;
 	pthread_mutex_unlock(philo->data->meal_count);

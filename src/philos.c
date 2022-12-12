@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:19:29 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:05:45 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_philo *create_philos(t_data *data)
 		philos[i].times_eaten = 0;
 		philos[i].is_dead = false;
 		philos[i].data = data;
-		philos[i].state = IDLE;
+		philos[i].eating = false;
 		philos[i].last_eaten = 0;
 		if (philos[i].nb == data->philo_nb)
 			philos[0].left_fork = philos[i].right_fork;
@@ -47,13 +47,15 @@ int init_locks(t_data *data)
 	data->full_flag = malloc(sizeof(pthread_mutex_t));
 	data->meal_count = malloc(sizeof(pthread_mutex_t));
 	data->write = malloc(sizeof(pthread_mutex_t));
+	data->is_eating = malloc(sizeof(pthread_mutex_t));
 	if (data->death_check == NULL || data->time_check == NULL || data->full_flag == NULL || data->meal_count == NULL || data->write == NULL)
 		return (EXIT_FAILURE);
 	if (pthread_mutex_init(data->death_check, NULL) != 0 ||
 		pthread_mutex_init(data->time_check, NULL) != 0 ||
 		pthread_mutex_init(data->full_flag, NULL) != 0 ||
 		pthread_mutex_init(data->meal_count, NULL) != 0 ||
-		pthread_mutex_init(data->write, NULL) != 0
+		pthread_mutex_init(data->write, NULL) != 0 ||
+		pthread_mutex_init(data->is_eating, NULL) != 0 
 		 )
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

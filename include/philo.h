@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 13:20:13 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:38:10 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_data
 	pthread_mutex_t	*death_check;
 	pthread_mutex_t	*full_flag;
 	pthread_mutex_t	*meal_count;
+	pthread_mutex_t	*is_eating;
 }	t_data;
 
 typedef struct s_fork
@@ -62,22 +63,13 @@ typedef struct s_fork
 	bool			is_in_use;
 }	t_fork;
 
-typedef enum s_state
-{
-	TOOK_FORKS = 0,
-	EATING = 1,
-	SLEEPING = 2,
-	THINKING = 3,
-	DIED = 4,
-	IDLE = 5
-} t_state;
 typedef struct s_philo
 {
 	int		times_eaten;
 	bool	is_dead;
 	int		nb;
 	int		last_eaten;
-	t_state	state;
+	bool	eating;
 	t_fork	*left_fork;
 	t_fork	*right_fork;
 	t_data	*data;
@@ -96,6 +88,7 @@ int to_sleep(t_philo *philo);
 bool death_check(t_philo *philo);
 bool full(t_philo *philo);
 int	get_last_eaten(t_philo *philo);
+bool check_eating(t_philo *philo);
 
 //fork.c
 
@@ -126,6 +119,14 @@ int init_locks(t_data *data);
 void	*routine(void *param);
 int think(t_philo *philo);
 bool full_check (t_philo *philo);
+
+//set.c
+
+void set_death(t_philo *philo);
+void increase_full(t_philo	*philo);
+void set_status(t_philo *philo, bool status);
+void set_last_eaten(t_philo *philo, int time);
+
 //thread.c
 
 int create_threads(t_philo *philos);
