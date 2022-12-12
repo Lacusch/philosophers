@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:24:41 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:38:56 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:48:18 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void set_death(t_philo *philo)
 void increase_full(t_philo	*philo)
 {
 	pthread_mutex_lock(philo->data->full_flag);
-	philo->data->philo_nb++;
+	philo->data->full++;
 	pthread_mutex_unlock(philo->data->full_flag);
 }
 

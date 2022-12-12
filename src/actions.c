@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:40:28 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:56:59 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,26 @@ int return_fork(t_philo *philo)
 
 int eat(t_philo *philo)
 {
+	bool full;
+
 	if (death_check(philo) == true)
 		return (true);
-	philo->last_eaten = get_time() - philo->data->start_time;
-	pthread_mutex_unlock(philo->data->time_check);
+	take_fork(philo);
 	print_action(philo, "is eating");
+	set_status(philo, true);
+	set_last_eaten(philo, get_time() - philo->data->start_time);
+	full = philo->times_eaten++ == philo->data->times_to_eat;
 	ft_sleep(philo->data->t_to_eat);
 	return_fork(philo);
-	
-	pthread_mutex_lock(philo->data->meal_count);
-	philo->times_eaten++;
-	pthread_mutex_unlock(philo->data->meal_count);
+	if (full && philo->data->times_to_eat != -1)
+		increase_full(philo);
 	return (0);
 }
 
 int to_sleep(t_philo *philo)
 {
-	pthread_mutex_lock(philo->data->write);
-	if (death_check(philo) == true)
-	{
-		pthread_mutex_unlock(philo->data->write);
-		return (true);
-	}
-	printf("%i %i is sleeping\n",  get_time() - philo->data->start_time, philo->nb);
-	pthread_mutex_unlock(philo->data->write);
+	print_action(philo, "is sleeping");
+	set_status(philo, false);
 	ft_sleep(philo->data->t_to_sleep);
 	return (0);
 }

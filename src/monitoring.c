@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:31:14 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:38:21 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void monitoring(t_philo *philos)
 {
 	int	i;
 
-	while (!death_check(philos))
+	while (1)
 	{
 		i = 0;
 		while (i < philos->data->philo_nb)
@@ -27,13 +27,21 @@ void monitoring(t_philo *philos)
 			i++;
 			// if full also break;
 		}
+		if (full(philos))
+		{
+			set_death(philos);
+			return ;
+		}
 	}
 }
-
+//rewrite
+//if eating return false
 bool is_dead(t_philo *philos)
 {
 	int last_eaten;
 
+	if (check_eating(philos))
+		return (false);
 	last_eaten = 0;
 	pthread_mutex_lock(philos->data->death_check);
 	pthread_mutex_lock(philos->data->time_check);

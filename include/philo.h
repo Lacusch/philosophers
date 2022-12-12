@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:38:10 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:43:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_data
 	pthread_mutex_t	*time_check;
 	pthread_mutex_t	*death_check;
 	pthread_mutex_t	*full_flag;
-	pthread_mutex_t	*meal_count;
 	pthread_mutex_t	*is_eating;
 }	t_data;
 
