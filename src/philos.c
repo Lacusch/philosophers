@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/08 15:23:48 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:49:05 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ t_philo *create_philos(t_data *data)
 	{
 		create_right_fork(&philos[i]);
 		if (i != 0)
-		{
 			philos[i].left_fork = philos[i - 1].right_fork;
-		}
 		philos[i].nb = i + 1;
 		philos[i].times_eaten = 0;
 		philos[i].is_dead = false;
@@ -34,10 +32,7 @@ t_philo *create_philos(t_data *data)
 		philos[i].state = IDLE;
 		philos[i].last_eaten = 0;
 		if (philos[i].nb == data->philo_nb)
-		{
 			philos[0].left_fork = philos[i].right_fork;
-		}
-		
 		i++;
 	}
 	i = 0;
@@ -69,6 +64,6 @@ int init_data(t_data *data)
 	data->philo_died = false;
 		data->start_time = get_time();
 	if (init_locks(data) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+		return (printf_error("Lock creating failed"));
 	return (0);
 }

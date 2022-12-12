@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/11 18:12:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:46:20 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ bool death_check(t_philo *philo);
 //parcing.c
 
 int	parce_input(int ac, char **av, t_data *data);
+bool printf_error(char* str);
+bool wrong_input(t_data *data);
 
 //philos.c
 t_philo *create_philos(t_data *data);

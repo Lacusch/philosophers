@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/05 12:06:56 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:45:30 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int ac, char **av)
 
 	if (parce_input(ac, av, &data))
 		return (EXIT_FAILURE);
-	// init data
 	init_data(&data);
 	philos = create_philos(&data);
 	create_threads(philos);
