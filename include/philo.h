@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:51:36 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:02:09 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,15 @@ int take_fork(t_philo *philo);
 int eat(t_philo *philo);
 int to_sleep(t_philo *philo);
 
+//check.c
+
+bool death_check(t_philo *philo);
+bool full(t_philo *philo);
+int last_time_eaten(t_philo *philo);
+
 //fork.c
 
 void	create_right_fork(t_philo *philos);
-
-//get_status.c
-
-bool death_check(t_philo *philo);
-
 
 //main.c
 

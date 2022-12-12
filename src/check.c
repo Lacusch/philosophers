@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_status.c                                       :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:25:18 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:48:46 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:01:18 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,20 @@ bool death_check(t_philo *philo)
 	return (ret);
 }
 
+bool full(t_philo *philo)
+{
+	bool ret;
 
-
+	pthread_mutex_lock(philo->data->full_flag);
+	ret = philo->data->philo_nb == philo->data->full;
+	pthread_mutex_unlock(philo->data->full_flag);
+	return (ret);
+}
+int last_time_eaten(t_philo *philo)
+{
+	int time;
+	pthread_mutex_lock(philo->data->time_check);
+	time = philo->last_eaten;
+	pthread_mutex_unlock(philo->data->time_check);
+	return (time);
+}

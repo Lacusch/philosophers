@@ -8,8 +8,8 @@ RED = \033[1;91m
 YELLOW = \033[1;33m
 NORMAL= \033[0m
 SRC = src/actions.c \
+	src/check.c \
 	src/fork.c \
-	src/get_status.c \
 	src/main.c \
 	src/monitoring.c \
 	src/parcing.c \
