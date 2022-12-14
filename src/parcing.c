@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:55:06 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:37:12 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:08:59 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	parce_input(int ac, char **av, t_data *data)
 	{
 		data->option = true;
 		data->times_to_eat = atoi(av[5]);
+		if (data->times_to_eat == 0)
+			data->full = data->philo_nb;
 	}
 	else
 		data->times_to_eat = -1;

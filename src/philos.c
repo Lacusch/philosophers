@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:44:36 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:07:22 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int init_locks(t_data *data)
 int init_data(t_data *data)
 {
 	data->philo_died = false;
-		data->start_time = get_time();
+	data->start_time = get_time();
 	if (init_locks(data) == EXIT_FAILURE)
 		return (printf_error("Lock creating failed"));
 	return (0);

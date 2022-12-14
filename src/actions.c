@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 11:33:24 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:14:43 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void print_action(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(philo->data->write);
-	if (death_check(philo) == false || ft_strcmp(str, "died") == 0)
+	if ((death_check(philo) == false || ft_strcmp(str, "died") == 0) && full(philo) == false)
 		printf("%i %i %s\n",  get_time() - philo->data->start_time, philo->nb, str);
 	pthread_mutex_unlock(philo->data->write);
 }
@@ -57,7 +57,8 @@ int eat(t_philo *philo)
 	set_status(philo, true);
 	print_action(philo, "is eating");
 	set_last_eaten(philo, get_time() - philo->data->start_time);
-	full = philo->times_eaten++ == philo->data->times_to_eat;
+	philo->times_eaten++;
+	full = philo->times_eaten == philo->data->times_to_eat;
 	ft_sleep(philo->data->t_to_eat);
 	return_fork(philo);
 	if (full && philo->data->times_to_eat != -1)
