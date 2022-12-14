@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:56:59 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:04:20 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void print_action(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(philo->data->write);
-	printf("%i %i %s\n",  get_time() - philo->data->start_time, philo->nb, str);
+	if (death_check(philo) == false || ft_strcmp(str, "died") == 0)
+		printf("%i %i %s\n",  get_time() - philo->data->start_time, philo->nb, str);
 	pthread_mutex_unlock(philo->data->write);
 }
 
@@ -47,8 +48,8 @@ int eat(t_philo *philo)
 	if (death_check(philo) == true)
 		return (true);
 	take_fork(philo);
-	print_action(philo, "is eating");
 	set_status(philo, true);
+	print_action(philo, "is eating");
 	set_last_eaten(philo, get_time() - philo->data->start_time);
 	full = philo->times_eaten++ == philo->data->times_to_eat;
 	ft_sleep(philo->data->t_to_eat);
@@ -60,6 +61,8 @@ int eat(t_philo *philo)
 
 int to_sleep(t_philo *philo)
 {
+	if (death_check(philo) == true)
+		return (true);
 	print_action(philo, "is sleeping");
 	set_status(philo, false);
 	ft_sleep(philo->data->t_to_sleep);

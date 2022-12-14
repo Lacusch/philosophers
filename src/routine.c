@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 14:49:05 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 15:59:37 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:40:56 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,9 @@ void	*routine(void *param)
 			return (NULL);
 		if (to_sleep(philos) == true)
 			return (NULL);
+		if (death_check(philos) == true)
+			return (NULL);
 		print_action(philos, "is thinking");
 	}
 	return (NULL);
-}
-
-bool full_check (t_philo *philo)
-{
-
-	pthread_mutex_lock(philo->data->full_flag);
-	if (death_check(philo) == true)
-	{
-		pthread_mutex_unlock(philo->data->full_flag);
-		return (true);
-	}
-	if (philo->times_eaten >= philo->data->times_to_eat && philo->data->option)
-	{
-		pthread_mutex_unlock(philo->data->full_flag);
-		return (true);
-	}
-	pthread_mutex_unlock(philo->data->full_flag);
-	return (false);
 }
