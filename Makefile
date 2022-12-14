@@ -1,7 +1,8 @@
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -pthread #-Werror
-
+CLFAGS2 = -Wall -Wextra -pthread -Wno-gnu-include-next -I/LeakSanitizer/include -L./LeakSanitizer/ -llsan -lc++
+DEBUG_FLAG = -Wall -Wextra -pthread -g -fsanitize=address
 # Colors
 GREEN = \033[1;32m
 RED = \033[1;91m
@@ -26,10 +27,18 @@ OBJECT = $(SRC:.c=.o)
 
 all: $(NAME)
 
+d: fclean $(OBJECT)
+	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
+	@echo "$(NORMAL)$(GREEN)Flags used: $(DEBUG_FLAG)$(NORMAL)"	
+	@$(CC) $(OBJECT) $(DEBUG_FLAG) -o $(NAME)
+d2: fclean $(OBJECT)
+	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
+	@echo "$(NORMAL)$(GREEN)Flags used: $(CLFAGS2)$(NORMAL)"	
+	@$(CC) $(OBJECT) $(CLFAGS2) -o $(NAME)
 $(NAME): $(OBJECT)
 	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
 	@echo "$(NORMAL)$(GREEN)Flags used: $(CFLAGS)$(NORMAL)"	
-	@$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
+	$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
 clean:
 	@echo "$(YELLOW)Cleaning *.o files$(NORMAL)"
 	@rm -rf src/*.o

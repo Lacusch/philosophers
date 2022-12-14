@@ -49,3 +49,9 @@ time_to_sleep \
 - Write a function to check if the philo has died or not and run it inside each operation.
 - Write a monitoring function to run inside the main loop.
 - Fix other philo /philos doing stuff after one died (sleeping)
+
+- philos are eating 1 more times
+- put philos in a folder
+- replace atoi
+- fixed the leaks
+- Fix flags not working
