@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:03:06 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:20:48 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	main(int ac, char **av)
 	//Also free philo data
 	if (philos == NULL)
 		return(free(philos), printf_error("philo allocation failed"));
-	printf("number of times to eat%i, number of philos full%i\n", philos->data->times_to_eat, philos->data->full);
-	printf("The number of philos is%i\n", philos->data->philo_nb);
 	create_threads(philos);
 	free(philos);
 	return (EXIT_SUCCESS);
