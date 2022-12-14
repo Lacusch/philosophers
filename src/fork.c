@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/12 12:46:38 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:11:49 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,4 @@ void	create_right_fork(t_philo *philos)
 	pthread_mutex_init(mutex, NULL);
 	philos->right_fork->mutex = mutex;
 }
-
-
 

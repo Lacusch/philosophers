@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:54:10 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:39:52 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:57:40 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,9 @@ void data_null(t_data *data)
 	data->death_check = NULL;
 	data->full_flag = NULL;
 	data->is_eating = NULL;
+}
+
+void free_mutex(pthread_mutex_t *mutex)
+{
+	pthread_mutex_destroy(mutex);
 }

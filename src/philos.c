@@ -6,19 +6,17 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:07:22 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:09:49 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_philo *create_philos(t_data *data)
+t_philo *create_philos(t_data *data, t_philo *philos)
 {
 	int			i;
 	i = 0;
 
-	t_philo *philos;
-	philos = malloc(sizeof(t_philo) * data->philo_nb);
 	while (i < data->philo_nb)
 	{
 		create_right_fork(&philos[i]);
@@ -65,4 +63,18 @@ int init_data(t_data *data)
 	if (init_locks(data) == EXIT_FAILURE)
 		return (printf_error("Lock creating failed"));
 	return (0);
+}
+
+void free_locks(t_data *data)
+{
+	free_mutex(data->write);
+	free_mutex(data->time_check);
+	free_mutex(data->death_check);
+	free_mutex(data->full_flag);
+	free_mutex(data->is_eating);
+	free(data->write);
+	free(data->time_check);
+	free(data->death_check);
+	free(data->full_flag);
+	free(data->is_eating);
 }

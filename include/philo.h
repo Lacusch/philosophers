@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:40:07 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:11:42 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,10 @@ bool wrong_input(t_data *data);
 
 //philos.c
 
-t_philo *create_philos(t_data *data);
+t_philo *create_philos(t_data *data, t_philo* philos);
 int init_data(t_data *data);
 int init_locks(t_data *data);
+void free_locks(t_data *data);
 
 //routine.c
 
@@ -140,5 +141,6 @@ void	philo_printf(t_data *philo);
 void ft_sleep(int ms);
 int ft_strcmp(const char *s1, const char *s2);
 void data_null(t_data *data);
+void free_mutex(pthread_mutex_t *mutex);
 
 #endif
