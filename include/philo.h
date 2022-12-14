@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 11:01:12 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:40:07 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,5 +139,6 @@ int get_time(void);
 void	philo_printf(t_data *philo);
 void ft_sleep(int ms);
 int ft_strcmp(const char *s1, const char *s2);
+void data_null(t_data *data);
 
 #endif

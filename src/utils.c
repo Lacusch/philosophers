@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:54:10 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 10:59:46 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:39:52 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,22 @@ int ft_strcmp(const char *s1, const char *s2)
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+void data_null(t_data *data)
+{
+	data->philo_nb = 0;
+	data->t_to_die = 0;
+	data->t_to_eat = 0;
+	data->t_to_sleep = 0;
+	data->option = 0;
+	data->times_to_eat = 0;
+	data->start_time = 0;
+	data->philo_died = 0;
+	data->full = 0;
+	data->write = NULL;
+	data->time_check = NULL;
+	data->death_check = NULL;
+	data->full_flag = NULL;
+	data->is_eating = NULL;
 }

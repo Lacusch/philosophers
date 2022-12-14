@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:55:06 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:08:59 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:31:08 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ int	parce_input(int ac, char **av, t_data *data)
 	}
 	else
 		data->times_to_eat = -1;
-	if (wrong_input(data))
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

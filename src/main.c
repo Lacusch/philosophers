@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:15:55 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:20:48 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:39:58 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	main(int ac, char **av)
 	t_data	data;
 	t_philo			*philos;
 
-	if (parce_input(ac, av, &data))
-		return (EXIT_FAILURE);
+	data_null(&data);
+	parce_input(ac, av, &data);
+	if (wrong_input(&data) == true)
+		return (1);
 	init_data(&data);
 	philos = malloc(sizeof(t_philo) * data.philo_nb);
 	if (philos == NULL)
@@ -31,4 +33,3 @@ int	main(int ac, char **av)
 	free(philos);
 	return (EXIT_SUCCESS);
 }
-
