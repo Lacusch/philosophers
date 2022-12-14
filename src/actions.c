@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 11:04:20 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/14 11:33:24 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int take_fork(t_philo *philo)
 	pthread_mutex_lock(philo->left_fork->mutex);
 	print_action(philo, "has taken a fork");
 	// Handle one philo
+	if (philo->data->philo_nb == 1)
+	{
+		ft_sleep(philo->data->t_to_die);
+		return (1);
+	}
 	pthread_mutex_lock(philo->right_fork->mutex);
 	print_action(philo, "has taken a fork");
 	return (EXIT_SUCCESS);
@@ -47,7 +52,8 @@ int eat(t_philo *philo)
 
 	if (death_check(philo) == true)
 		return (true);
-	take_fork(philo);
+	if (take_fork(philo) == 1)
+		return (1);
 	set_status(philo, true);
 	print_action(philo, "is eating");
 	set_last_eaten(philo, get_time() - philo->data->start_time);
