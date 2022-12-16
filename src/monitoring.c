@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 10:27:34 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:04:06 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void monitoring(t_philo *philos)
 		}
 		if (full(philos))
 		{
-			set_death(philos);
+			// set_death(philos);
 			return ;
 		}
 	}
@@ -42,20 +42,23 @@ bool is_dead(t_philo *philos)
 
 	if (check_eating(philos) == true)
 		return (false);
-	last_eaten = 0;
-	pthread_mutex_lock(philos->data->death_check);
-	pthread_mutex_lock(philos->data->time_check);
-	last_eaten = get_time() - philos->data->start_time - philos->last_eaten;
-	pthread_mutex_unlock(philos->data->time_check);
+	// if (full(philos) == true)
+	// 	return (true);
+	last_eaten = get_time() - philos->data->start_time - get_last_eaten(philos);
 	if (last_eaten > philos->data->t_to_die)
 	{
+		pthread_mutex_lock(philos->data->death_check);
 		philos->data->philo_died = true;
 		philos->is_dead = true;
 		pthread_mutex_unlock(philos->data->death_check);
 		print_action(philos, "died");
 		return (true);		
 	}
-	pthread_mutex_unlock(philos->data->death_check);
+	else if (full(philos) == 1)
+	{
+		set_death(philos);
+		return (true);
+	}
 	return (false);
 }
 
