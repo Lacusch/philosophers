@@ -50,15 +50,33 @@ t: all
 	@echo "running test with parameters 2 200 200 200 5 \n"
 	@sleep 1
 	@./$(NAME) 2 200 200 200 5
+
+t1: all
+	@echo "running test with parameters 1 800 200 200 \n"
+	@echo "The philosopher should not eat and should die\n"
+	@sleep 1
+	@./$(NAME) 1 800 200 200
 t2: all
+	@echo "running test with parameters5 800 200 200 \n"
+	@echo "No philosopher should die\n"
 	@sleep 1
-	@echo "running test with parameters 2 200 200 200 5 \n"
-	./$(NAME) 10 300 200 200
+	@./$(NAME) 5 800 200 200
+t3: all
+	@echo "running test with parameters 5 800 200 200 7 \n"
+	@echo "No philosopher should die and the simuation should stop after every philo has eaten 7 times"
+	@sleep 1
+	@./$(NAME) 5 800 200 200 7
+t4: all
+	@echo "running test with parameters 4 410 200 200 \n"
+	@echo "No philosopher should die\n"
+	@sleep 1
+	@./$(NAME) 4 410 200 200
 t5: all
+	@echo "running test with parameters 4 310 200 100 \n"
+	@echo "One pholosopher should die"
 	@sleep 1
-	@echo "running test with parameters 30 600 200 200 5 \n"
-	./$(NAME) 40 310 200 200
+	@./$(NAME) 4 310 200 100
 print:
 	@echo "How to add parameters:"
 	@echo "./philo n\nnumber_of_philosophers\ntime_to_die\ntime_to_eat\ntime_to_sleep"
-.PHONY: all clean fclean re t
+.PHONY: all clean fclean re d d2 t t1 t2 t3 t5 t5 print
