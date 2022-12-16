@@ -73,10 +73,10 @@ t4: all
 	@./$(NAME) 4 410 200 200
 t5: all
 	@echo "running test with parameters 4 310 200 100 \n"
-	@echo "One pholosopher should die"
+	@echo "One philosopher should die"
 	@sleep 1
 	@./$(NAME) 4 310 200 100
 print:
 	@echo "How to add parameters:"
-	@echo "./philo n\nnumber_of_philosophers\ntime_to_die\ntime_to_eat\ntime_to_sleep"
+	@echo "./philo \n1.number_of_philosophers\n2.time_to_die\n3.time_to_eat\n4.time_to_sleep\n5.(optional)times to eat\n"
 .PHONY: all clean fclean re d d2 t t1 t2 t3 t5 t5 print

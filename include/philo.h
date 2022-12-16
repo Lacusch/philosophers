@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:11:42 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:59:28 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ bool is_dead(t_philo *philos);
 int	parce_input(int ac, char **av, t_data *data);
 bool printf_error(char* str);
 bool wrong_input(t_data *data);
+int	ft_atoi(char *str);
 
 //philos.c
 
