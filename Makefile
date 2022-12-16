@@ -1,13 +1,13 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -pthread #-Werror
-CLFAGS2 = -Wall -Wextra -pthread -Wno-gnu-include-next -I/LeakSanitizer/include -L./LeakSanitizer/ -llsan -lc++
+CFLAGS = -Wall -Wextra -Werror -pthread
 DEBUG_FLAG = -Wall -Wextra -pthread -g -fsanitize=address
 # Colors
 GREEN = \033[1;32m
 RED = \033[1;91m
 YELLOW = \033[1;33m
 NORMAL= \033[0m
+
 SRC = src/actions.c \
 	src/check.c \
 	src/fork.c \
@@ -31,14 +31,11 @@ d: fclean $(OBJECT)
 	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
 	@echo "$(NORMAL)$(GREEN)Flags used: $(DEBUG_FLAG)$(NORMAL)"	
 	@$(CC) $(OBJECT) $(DEBUG_FLAG) -o $(NAME)
-d2: fclean $(OBJECT)
-	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
-	@echo "$(NORMAL)$(GREEN)Flags used: $(CLFAGS2)$(NORMAL)"	
-	@$(CC) $(OBJECT) $(CLFAGS2) -o $(NAME)
 $(NAME): $(OBJECT)
 	@echo "$(NORMAL)$(GREEN)Making $(NAME)$(NORMAL)"
 	@echo "$(NORMAL)$(GREEN)Flags used: $(CFLAGS)$(NORMAL)"	
-	$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
+	@$(CC) $(OBJECT) $(CFLAGS) -o $(NAME)
+	@echo "$(NORMAL)$(NAME) compiled $(NORMAL)"
 clean:
 	@echo "$(YELLOW)Cleaning *.o files$(NORMAL)"
 	@rm -rf src/*.o
@@ -79,4 +76,7 @@ t5: all
 print:
 	@echo "How to add parameters:"
 	@echo "./philo \n1.number_of_philosophers\n2.time_to_die\n3.time_to_eat\n4.time_to_sleep\n5.(optional)times to eat\n"
-.PHONY: all clean fclean re d d2 t t1 t2 t3 t5 t5 print
+visualiser:
+	@echo "Get the visualiser here"
+	@echo "https://nafuka11.github.io/philosophers-visualizer/"
+.PHONY: all clean fclean re d t t1 t2 t3 t5 t5 print visualiser
