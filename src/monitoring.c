@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 16:04:06 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:30:14 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void monitoring(t_philo *philos)
 		{
 			if (is_dead(&philos[i]))
 				return ;
-				//lock print??
 			i++;
-			// if full also break;
 		}
 		if (full(philos))
 		{
-			// set_death(philos);
+			set_death(philos);
 			return ;
 		}
 	}
@@ -42,8 +40,6 @@ bool is_dead(t_philo *philos)
 
 	if (check_eating(philos) == true)
 		return (false);
-	// if (full(philos) == true)
-	// 	return (true);
 	last_eaten = get_time() - philos->data->start_time - get_last_eaten(philos);
 	if (last_eaten > philos->data->t_to_die)
 	{
