@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 14:14:43 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:26:22 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int return_fork(t_philo *philo)
 
 int eat(t_philo *philo)
 {
-	bool full;
+	bool b_full;
 
 	if (death_check(philo) == true)
 		return (true);
@@ -58,10 +58,10 @@ int eat(t_philo *philo)
 	print_action(philo, "is eating");
 	set_last_eaten(philo, get_time() - philo->data->start_time);
 	philo->times_eaten++;
-	full = philo->times_eaten == philo->data->times_to_eat;
+	b_full = philo->times_eaten == philo->data->times_to_eat;
 	ft_sleep(philo->data->t_to_eat);
 	return_fork(philo);
-	if (full && philo->data->times_to_eat != -1)
+	if (b_full && philo->data->times_to_eat != -1)
 		increase_full(philo);
 	return (0);
 }
