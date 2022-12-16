@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:30:14 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:34:50 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,9 @@ void monitoring(t_philo *philos)
 				return ;
 			i++;
 		}
-		if (full(philos))
-		{
-			set_death(philos);
-			return ;
-		}
 	}
 }
-//rewrite
-//if eating return false
+
 bool is_dead(t_philo *philos)
 {
 	int last_eaten;
@@ -57,15 +51,4 @@ bool is_dead(t_philo *philos)
 	}
 	return (false);
 }
-
-/*
- heleens stuf from here
-void death_set(t_philo *philo)
-{
-	pthread_mutex_lock(philo->data->death_lock);
-	philo->data->death = true;
-	pthread_mutex_unlock(philo->data->death_check);
-	return ret;
-}
-*/
 

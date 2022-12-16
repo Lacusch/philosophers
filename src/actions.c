@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:38:27 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:26:22 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:34:58 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int take_fork(t_philo *philo)
 		return (true);
 	pthread_mutex_lock(philo->left_fork->mutex);
 	print_action(philo, "has taken a fork");
-	// Handle one philo
 	if (philo->data->philo_nb == 1)
 	{
 		ft_sleep(philo->data->t_to_die);
