@@ -6,13 +6,13 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:55:06 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:59:30 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:32:11 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-bool printf_error(char* str)
+bool	printf_error(char *str)
 {
 	if (str == NULL)
 		printf("Error\n");
@@ -21,7 +21,7 @@ bool printf_error(char* str)
 	return (true);
 }
 
-bool wrong_input(t_data *data)
+bool	wrong_input(t_data *data)
 {
 	if (data->philo_nb == 0)
 		return (printf_error("no philo"));
@@ -38,6 +38,7 @@ bool wrong_input(t_data *data)
 	else
 		return (false);
 }
+
 int	parce_input(int ac, char **av, t_data *data)
 {
 	if (ac < 5)
@@ -65,8 +66,6 @@ int	parce_input(int ac, char **av, t_data *data)
 		data->times_to_eat = -1;
 	return (EXIT_SUCCESS);
 }
-
-
 
 int	ft_atoi(char *str)
 {

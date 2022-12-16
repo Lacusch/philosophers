@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 18:26:57 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:28:09 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	create_right_fork(t_philo *philos)
 {
-	pthread_mutex_t *mutex;
+	pthread_mutex_t	*mutex;
+
 	mutex = malloc(sizeof(pthread_mutex_t));
 	philos->right_fork = malloc(sizeof(t_fork));
 	philos->left_fork = NULL;
@@ -23,8 +24,7 @@ void	create_right_fork(t_philo *philos)
 	philos->right_fork->mutex = mutex;
 }
 
-
-void free_right_fork(t_philo *philo)
+void	free_right_fork(t_philo *philo)
 {
 	pthread_mutex_destroy(philo->right_fork->mutex);
 	free(philo->right_fork->mutex);

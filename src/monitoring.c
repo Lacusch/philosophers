@@ -6,13 +6,13 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:38:47 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:34:50 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:31:25 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void monitoring(t_philo *philos)
+void	monitoring(t_philo *philos)
 {
 	int	i;
 
@@ -28,9 +28,9 @@ void monitoring(t_philo *philos)
 	}
 }
 
-bool is_dead(t_philo *philos)
+bool	is_dead(t_philo *philos)
 {
-	int last_eaten;
+	int	last_eaten;
 
 	if (check_eating(philos) == true)
 		return (false);
@@ -42,7 +42,7 @@ bool is_dead(t_philo *philos)
 		philos->is_dead = true;
 		pthread_mutex_unlock(philos->data->death_check);
 		print_action(philos, "died");
-		return (true);		
+		return (true);
 	}
 	else if (full(philos) == 1)
 	{
@@ -51,4 +51,3 @@ bool is_dead(t_philo *philos)
 	}
 	return (false);
 }
-

@@ -6,17 +6,16 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 17:12:42 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/02 16:48:23 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 19:36:46 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int get_time(void)
+int	get_time(void)
 {
-	struct timeval tv;
-	
+	struct timeval	tv;
+
 	gettimeofday(&tv, NULL);
-	// printf("time is %li\n", (tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-	return((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
