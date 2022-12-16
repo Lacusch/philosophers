@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 15:08:14 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:59:28 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:17:17 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ bool check_eating(t_philo *philo);
 //fork.c
 
 void	create_right_fork(t_philo *philos);
+void free_right_fork(t_philo *philo);
 
 //main.c
 
@@ -142,6 +143,6 @@ void	philo_printf(t_data *philo);
 void ft_sleep(int ms);
 int ft_strcmp(const char *s1, const char *s2);
 void data_null(t_data *data);
-void free_mutex(pthread_mutex_t *mutex);
+void free_all_forks(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:50:00 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:11:49 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:12:06 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,12 @@ void	create_right_fork(t_philo *philos)
 	philos->right_fork->mutex = mutex;
 }
 
+
+void free_right_fork(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->right_fork->mutex);
+	pthread_mutex_destroy(philo->right_fork->mutex);
+	free(philo->right_fork->mutex);
+	philo->right_fork->mutex = NULL;
+	free(philo->right_fork);
+}

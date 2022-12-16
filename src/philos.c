@@ -6,7 +6,7 @@
 /*   By: slaszlo- <slaszlo-@student.42heibronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:54:22 by slaszlo-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:09:49 by slaszlo-         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:14:00 by slaszlo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int init_data(t_data *data)
 
 void free_locks(t_data *data)
 {
-	free_mutex(data->write);
-	free_mutex(data->time_check);
-	free_mutex(data->death_check);
-	free_mutex(data->full_flag);
-	free_mutex(data->is_eating);
+	pthread_mutex_destroy(data->write);
+	pthread_mutex_destroy(data->time_check);
+	pthread_mutex_destroy(data->death_check);
+	pthread_mutex_destroy(data->full_flag);
+	pthread_mutex_destroy(data->is_eating);
 	free(data->write);
 	free(data->time_check);
 	free(data->death_check);
